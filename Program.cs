@@ -12,31 +12,37 @@ LibroHandles librohandles = new LibroHandles(BDL);
 AutorHandles autorhandles = new AutorHandles(BDA);
 
 
-app.MapGet("/api/v1/autor",() => {
+app.MapGet("/api/v1/autor", () =>
+{
     return Results.Ok(autorhandles.ALL());
 });
 
-app.MapGet("/api/v1/libro",() => {
+app.MapGet("/api/v1/libro", () =>
+{
     return Results.Ok(librohandles.ALL());
 });
 
-app.MapPost("/api/v1/autor", (AutorDTO autor) => {
+app.MapPost("/api/v1/autor", (AutorDTO autor) =>
+{
     autorhandles.create(autor);
     return Results.Ok(autor);
 });
 
-app.MapPost("/api/v1/libro", (LibroDTO libro) => {
+app.MapPost("/api/v1/libro", (LibroDTO libro) =>
+{
     librohandles.create(libro);
     return Results.Ok(libro);
 });
 
-app.MapPut("/api/v1/autor/{id:guid}", (Guid id, AutorDTO autor) => {
-    autorhandles.update(autor,id);
+app.MapPut("/api/v1/autor/{id:guid}", (Guid id, AutorDTO autor) =>
+{
+    autorhandles.update(autor, id);
     return Results.Ok(autorhandles.ALL());
 });
 
-app.MapPut("/api/v1/libro/{id:guid}", (Guid id, LibroDTO libro) => {
-    librohandles.update(libro,id);
+app.MapPut("/api/v1/libro/{id:guid}", (Guid id, LibroDTO libro) =>
+{
+    librohandles.update(libro, id);
     return Results.Ok(librohandles.ALL());
 });
 
