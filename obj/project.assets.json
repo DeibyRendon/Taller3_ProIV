@@ -8,26 +8,23 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\deibyrh\\.nuget\\packages\\": {}
+    "C:\\Users\\nmejia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\deibyrh\\Desktop\\QUINTO SEMESTRE\\programacion IV\\taller 3\\Libreria\\Libreria.csproj",
+      "projectUniqueName": "D:\\Proyectos_C#\\Taller3_ProIV\\Libreria.csproj",
       "projectName": "Libreria",
-      "projectPath": "C:\\Users\\deibyrh\\Desktop\\QUINTO SEMESTRE\\programacion IV\\taller 3\\Libreria\\Libreria.csproj",
-      "packagesPath": "C:\\Users\\deibyrh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\deibyrh\\Desktop\\QUINTO SEMESTRE\\programacion IV\\taller 3\\Libreria\\obj\\",
+      "projectPath": "D:\\Proyectos_C#\\Taller3_ProIV\\Libreria.csproj",
+      "packagesPath": "C:\\Users\\nmejia\\.nuget\\packages\\",
+      "outputPath": "D:\\Proyectos_C#\\Taller3_ProIV\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\deibyrh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\nmejia\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
-      "sources": {
-        "https://api.nuget.org/v3/index.json": {}
-      },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",

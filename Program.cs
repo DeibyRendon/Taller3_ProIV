@@ -6,11 +6,11 @@ using Libreria.LibroHandlesrs;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-List<AutorDTO> BDA = new List<AutorDTO>();
-List<LibroDTO> BDL = new List<LibroDTO>();
-LibroHandles librohandles = new LibroHandles(BDL);
-AutorHandles autorhandles = new AutorHandles(BDA);
 
+List<LibroDTO> BDL = new List<LibroDTO>();
+AutorHandles autorhandles = new AutorHandles();
+List<AutorDTO> BDA = autorhandles.Autor;
+LibroHandles librohandles = new LibroHandles(BDL, autorhandles);
 
 app.MapGet("/api/v1/autor", () =>
 {
@@ -25,13 +25,17 @@ app.MapGet("/api/v1/libro", () =>
 app.MapPost("/api/v1/autor", (AutorDTO autor) =>
 {
     autorhandles.create(autor);
+
     return Results.Ok(autor);
 });
 
 app.MapPost("/api/v1/libro", (LibroDTO libro) =>
 {
-    librohandles.create(libro);
-    return Results.Ok(libro);
+    if (librohandles.create(libro))
+    {
+        return Results.Ok(libro);
+    }
+    return Results.BadRequest(libro);
 });
 
 app.MapPut("/api/v1/autor/{id:guid}", (Guid id, AutorDTO autor) =>
