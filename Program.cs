@@ -12,43 +12,57 @@ AutorHandles autorhandles = new AutorHandles();
 List<AutorDTO> BDA = autorhandles.Autor;
 LibroHandles librohandles = new LibroHandles(BDL, autorhandles);
 
-app.MapGet("/api/v1/autor", () =>
+app.MapGet("/api/v1/autores", () =>
 {
     return Results.Ok(autorhandles.ALL());
 });
 
-app.MapGet("/api/v1/libro", () =>
+app.MapPost("/api/v1/autores", (AutorDTO autor) =>
 {
-    return Results.Ok(librohandles.ALL());
-});
-
-app.MapPost("/api/v1/autor", (AutorDTO autor) =>
-{
-    autorhandles.create(autor);
+    autorhandles.CrearAutor(autor);
 
     return Results.Ok(autor);
 });
 
-app.MapPost("/api/v1/libro", (LibroDTO libro) =>
+app.MapPut("/api/v1/autores/{id:guid}", (Guid id, AutorDTO autor) =>
 {
-    if (librohandles.create(libro))
+    autorhandles.ActualizarAutor(autor, id);
+    return Results.Ok(autorhandles.ALL());
+});
+
+
+app.MapDelete("/api/v1/autores/{id:guid}", (Guid id) =>
+{
+    autorhandles.EliminarAutor(id);
+    return Results.Ok(autorhandles.ALL());
+});
+
+app.MapGet("/api/v1/libros", () =>
+{
+    return Results.Ok(librohandles.ALL());
+});
+
+app.MapPost("/api/v1/libros", (LibroDTO libro) =>
+{
+    if (librohandles.CrearLibro(libro))
     {
         return Results.Ok(libro);
     }
     return Results.BadRequest(libro);
 });
 
-app.MapPut("/api/v1/autor/{id:guid}", (Guid id, AutorDTO autor) =>
+app.MapPut("/api/v1/libros/{id:guid}", (Guid id, LibroDTO libro) =>
 {
-    autorhandles.update(autor, id);
-    return Results.Ok(autorhandles.ALL());
-});
-
-app.MapPut("/api/v1/libro/{id:guid}", (Guid id, LibroDTO libro) =>
-{
-    librohandles.update(libro, id);
+    librohandles.ActualizarLibro(libro, id);
     return Results.Ok(librohandles.ALL());
 });
+
+app.MapDelete("/api/v1/libros/{id:guid}", (Guid id) =>
+{
+    librohandles.EliminarLibro(id);
+    return Results.Ok(librohandles.ALL());
+});
+
 
 
 app.Run();

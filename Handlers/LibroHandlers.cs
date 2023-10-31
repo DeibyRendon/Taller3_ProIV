@@ -5,8 +5,9 @@ public class LibroHandles
 {
     private AutorHandles _autorHandles;
     private List<LibroDTO> _libro;
-    public LibroHandles(List<LibroDTO> libro,AutorHandles autorHandles)
-    {   this.AutorHandles=autorHandles;
+    public LibroHandles(List<LibroDTO> libro, AutorHandles autorHandles)
+    {
+        this.AutorHandles = autorHandles;
         this._libro = libro;
     }
 
@@ -22,7 +23,7 @@ public class LibroHandles
            this._libro.Add(libro);
        } */
 
-    public Boolean create(LibroDTO libro )
+    public Boolean CrearLibro(LibroDTO libro)
     {
         Boolean registrado = false;
         if (AutorHandles.encontrado(libro.autorid))
@@ -34,20 +35,22 @@ public class LibroHandles
 
     }
 
-
-    /*     public void create(LibroDTO libro)
-        {
-
-            this._libro.Add(libro);
-
-        } */
-
-    public void update(LibroDTO libro, Guid id)
+    public void ActualizarLibro(LibroDTO libro, Guid id)
     {
         foreach (LibroDTO buscarlibro in this._libro)
             if (buscarlibro.id == id)
             {
                 buscarlibro.titulo = libro.titulo;
+                break;
+            }
+    }
+
+    public void EliminarLibro(Guid id)
+    {
+        foreach (LibroDTO buscar_libro in this._libro)
+            if (buscar_libro.id == id)
+            {
+                this._libro.Remove(buscar_libro);
                 break;
             }
     }
