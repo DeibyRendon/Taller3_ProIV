@@ -41,6 +41,15 @@ app.MapGet("/api/v1/libros", () =>
 {
     return Results.Ok(librohandles.ALL());
 });
+app.MapGet("/api/v1/autores/{id}", (Guid id) =>
+{
+    if (autorhandles.encontrado(id))
+    {
+        return Results.Ok(autorhandles.ObtenerAutorPorId(id));
+    }
+    return Results.BadRequest("no se encontro el Autor");
+
+});
 
 app.MapPost("/api/v1/libros", (LibroDTO libro) =>
 {
@@ -61,6 +70,16 @@ app.MapDelete("/api/v1/libros/{id:guid}", (Guid id) =>
 {
     librohandles.EliminarLibro(id);
     return Results.Ok(librohandles.ALL());
+});
+app.MapGet("/api/v1/libros/{id:guid}", (Guid id) =>
+{
+
+    if (librohandles.encontrado(id))
+    {
+        return Results.Ok(librohandles.ObtenerLibroPorId(id));
+    }
+    return Results.BadRequest("no se encontro el libro");
+
 });
 
 

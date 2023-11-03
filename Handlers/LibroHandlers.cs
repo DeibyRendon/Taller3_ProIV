@@ -54,5 +54,31 @@ public class LibroHandles
                 break;
             }
     }
+    public Boolean encontrado(Guid id)
+    {
+        Boolean encontrado = false;
+        foreach (LibroDTO buscar_libro in this._libro)
+            if (buscar_libro.id == id)
+            {
+                encontrado = true;
+                break;
+            }
+
+        return encontrado;
+    }
+
+    public LibroDTO ObtenerLibroPorId(Guid id)
+    {
+        LibroDTO encontrado = null;
+
+        foreach (LibroDTO buscar_libro in this._libro)
+            if (buscar_libro.id == id)
+            {
+                return buscar_libro;
+                break;
+            }
+        return encontrado;
+    }
+
 
 }

@@ -37,7 +37,7 @@ public class AutorHandles
             }
     }
 
-    public void EliminarAutor( Guid id)
+    public void EliminarAutor(Guid id)
     {
         foreach (AutorDTO buscar_Autor in this.Autor)
             if (buscar_Autor.id == id)
@@ -59,5 +59,20 @@ public class AutorHandles
 
         return encontrado;
     }
+
+    public AutorDTO ObtenerAutorPorId(Guid id)
+    {
+        AutorDTO encontrado = null;
+
+        foreach (AutorDTO buscar_Autor in this.Autor)
+            if (buscar_Autor.id == id)
+            {
+                return buscar_Autor;
+
+            }
+        return encontrado;
+    }
+
+
 
 }
